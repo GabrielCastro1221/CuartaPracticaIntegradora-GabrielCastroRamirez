@@ -1,0 +1,20 @@
+<section>
+  <form action="/api/users/login" method="POST" class="container form border">
+    <h1 class="mb-2 text-center fs-5 fw-bold py-2 text-uppercase">Ingresar</h1>
+    <div class="mb-3">
+      <label for="email" class="form-label">Correo electronico</label>
+      <input type="email" class="form-control" name="email" id="email">
+    </div>
+    <div class="mb-4">
+      <label for="password" class="form-label">contraseña</label>
+      <input type="password" name="password" id="password" class="form-control">
+    </div>
+    <button type="submit" class="btn-ok text-uppercase fw-bold w-100">Ingresar</button>
+    <div class="d-flex align-items-center justify-content-center gap-5">
+      <p class="text-center mt-4">No tenes cuenta? <a href="/register"
+          class="text-decoration-none fw-bold  link-color">Registrate</a></p>
+      <p class="text-center mt-4">Olvidaste tu contraseña? <a href="/reset-password"
+          class=" fw-bold text-decoration-none link-color">Restablecer contraseña</a></p>
+    </div>
+  </form>
+</section>

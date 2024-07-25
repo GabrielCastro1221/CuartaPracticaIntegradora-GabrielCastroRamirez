@@ -1,0 +1,26 @@
+<form action="/api/users/register" method="POST" class="container border form px-3">
+  <h1 class="mb-2 text-center fs-5 fw-bold py-2 text-uppercase">Registrarse</h1>
+  <div class="mb-3">
+    <label for="first_name" class="form-label">Nombre</label>
+    <input type="text" class="form-control" name="first_name" id="first_name">
+  </div>
+  <div class="mb-3">
+    <label for="last_name" class="form-label">Apellido</label>
+    <input type="text" class="form-control" name="last_name" id="last_name">
+  </div>
+  <div class="mb-3">
+    <label for="age" class="form-label">Edad</label>
+    <input type="number" class="form-control" name="age" id="age">
+  </div>
+  <div class="mb-3">
+    <label for="email" class="form-label">Correo electronico</label>
+    <input type="email" class="form-control" name="email" id="email">
+  </div>
+  <div class="mb-3">
+    <label for="password" class="form-label">contraseña</label>
+    <input type="password" name="password" id="password" class="form-control">
+  </div>
+  <button type="submit" class="btn-ok text-uppercase fw-bold w-100">Registrase</button>
+  <p class="text-center mt-4">Ya tenes cuenta? <a href="/" class="text-decoration-none fw-bold link-color">Ingresa</a>
+  </p>
+</form>

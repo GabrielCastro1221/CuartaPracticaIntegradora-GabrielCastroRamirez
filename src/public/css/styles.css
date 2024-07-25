@@ -1,0 +1,119 @@
+/*CONTROL*/
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+:root {
+  --btn-ok: #065506;
+  --btn-ok-hover: #357935;
+  --text-light: #fcfcfc;
+  --link-color: #047b00;
+  --link-color-hover: #039f00;
+  --bg-form: #f7f7f7;
+  --btn-danger: #8b0000;
+  --btn-danger-hover: #b30000;
+}
+
+html {
+  scroll-behavior: smooth;
+  overflow-x: hidden;
+}
+
+/*UTILS*/
+.btn-ok {
+  background: var(--btn-ok);
+  color: var(--text-light);
+  border: none;
+  outline: none;
+  padding: 8px;
+  border-radius: 15px;
+}
+
+.mt-100 {
+  margin-top: 100px;
+}
+
+.btn-ok:hover {
+  background: var(--btn-ok-hover);
+}
+
+.link-color {
+  color: var(--link-color);
+}
+
+.link-color:hover {
+  color: var(--link-color-hover);
+}
+
+.form {
+  background: var(--bg-form);
+  margin-top: 100px;
+}
+
+.btn-card-danger {
+  background: var(--btn-danger);
+  color: var(--text-light);
+  padding-left: 10px;
+  padding-right: 10px;
+  padding-top: 3px;
+  padding-bottom: 3px;
+  border: none;
+  outline: none;
+  border-radius: 3px;
+}
+
+.btn-card-danger:hover {
+  background: var(--btn-danger-hover);
+}
+
+.btn-card-ok {
+  background: var(--btn-ok);
+  color: var(--text-light);
+  padding-left: 10px;
+  padding-right: 10px;
+  padding-top: 3px;
+  padding-bottom: 3px;
+  border: none;
+  outline: none;
+  border-radius: 3px;
+}
+
+.btn-card-ok:hover {
+  background: var(--btn-ok-hover);
+}
+
+.btn-prod {
+  border: none;
+  outline: none;
+  padding: 3px;
+  border-radius: 100%;
+  background: transparent;
+}
+
+.btn-prod svg {
+  width: 25px;
+  height: 25px;
+  color: var(--link-color);
+  cursor: pointer;
+}
+
+.btn-prod svg:hover {
+  color: var(--link-color-hover);
+  font-weight: bold;
+}
+
+/*CARDS*/
+.card-prod {
+  width: 20rem;
+}
+
+.card-home {
+  height: min-content;
+}
+
+/*BANNER COMPRAS*/
+.banner {
+  width: 100%;
+}

@@ -1,0 +1,91 @@
+<div class="d-flex justify-content-center align-items-between gap-5 mt-100 mb-4">
+    <a href="/carts/{{cartId}}" class="text-decoration-none btn-prod fs-6">
+        <svg xmlns="http://www.w3.org/2000/svg" width="22px" height="22px" fill="currentColor" class="bi bi-cart4"
+            viewBox="0 0 16 16">
+            <path
+                d="M0 2.5A.5.5 0 0 1 .5 2H2a.5.5 0 0 1 .485.379L2.89 4H14.5a.5.5 0 0 1 .485.621l-1.5 6A.5.5 0 0 1 13 11H4a.5.5 0 0 1-.485-.379L1.61 3H.5a.5.5 0 0 1-.5-.5M3.14 5l.5 2H5V5zM6 5v2h2V5zm3 0v2h2V5zm3 0v2h1.36l.5-2zm1.11 3H12v2h.61zM11 8H9v2h2zM8 8H6v2h2zM5 8H3.89l.5 2H5zm0 5a1 1 0 1 0 0 2 1 1 0 0 0 0-2m-2 1a2 2 0 1 1 4 0 2 2 0 0 1-4 0m9-1a1 1 0 1 0 0 2 1 1 0 0 0 0-2m-2 1a2 2 0 1 1 4 0 2 2 0 0 1-4 0" />
+        </svg>
+    </a>
+    <ul class="nav nav-pills d-flex gap-4">
+        <li class="nav-item dropdown border btn-prod rounded">
+            <a class="nav-link dropdown-toggle text-center text-dark fw-bold" data-bs-toggle="dropdown" href="#"
+                role="button" aria-expanded="false">Productos por pagina</a>
+            <ul class="dropdown-menu">
+                <li><a class="dropdown-item fw-bold" href="/products?limit=1">1 producto por pagina</a></li>
+                <li><a class="dropdown-item fw-bold" href="/products?limit=2">2 producto por pagina</a></li>
+                <li><a class="dropdown-item fw-bold" href="/products?limit=3">3 producto por pagina</a></li>
+                <li><a class="dropdown-item fw-bold" href="/products?limit=4">4 producto por pagina</a></li>
+                <li><a class="dropdown-item fw-bold" href="/products?limit=5">5 producto por pagina</a></li>
+                <li><a class="dropdown-item fw-bold" href="/products?limit=6">6 producto por pagina</a></li>
+            </ul>
+        </li>
+        <li class="nav-item dropdown border btn-prod rounded">
+            <a class="nav-link dropdown-toggle text-center text-dark fw-bold" data-bs-toggle="dropdown" href="#"
+                role="button" aria-expanded="false">Filtrar por precio</a>
+            <ul class="dropdown-menu">
+                <li><a class="dropdown-item fw-bold" href="/products?sort=desc">Mas caro</a></li>
+                <li><a class="dropdown-item fw-bold" href="/products?sort=asc">Mas barato</a></li>
+            </ul>
+        </li>
+    </ul>
+</div>
+<div class="d-flex flex-wrap align-items-center justify-content-center gap-4">
+    {{#each productos}}
+    <div class="card p-2 card-prod">
+        <img src={{thumbnail}} class="card-img-top" height="200" width="150" alt={{title}}>
+        <div class="card-body">
+            <h5 class="card-title text-center text-uppercase fs-6 fw-bold">{{title}}</h5>
+            <p class="card-title text-center"><span class="fw-semibold"> Categoria: </span>{{category}}</p>
+            <p class="card-title text-center"><span class="fw-semibold"> Stock: </span>{{stock}}</p>
+            <p class="card-title text-center"><span class="fw-semibold"> Precio: </span> ${{price}}</p>
+            <div class="d-flex align-items-center mt-3 justify-content-center gap-5">
+                <form action="/api/carts/{{../cartId}}/product/{{id}}" method="POST">
+                    <button class="btn-prod fw-bold text-warning border-warning" title="Agregar al carrito"
+                        type="submit">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                            class="bi bi-cart-plus" viewBox="0 0 16 16">
+                            <path
+                                d="M9 5.5a.5.5 0 0 0-1 0V7H6.5a.5.5 0 0 0 0 1H8v1.5a.5.5 0 0 0 1 0V8h1.5a.5.5 0 0 0 0-1H9z" />
+                            <path
+                                d="M.5 1a.5.5 0 0 0 0 1h1.11l.401 1.607 1.498 7.985A.5.5 0 0 0 4 12h1a2 2 0 1 0 0 4 2 2 0 0 0 0-4h7a2 2 0 1 0 0 4 2 2 0 0 0 0-4h1a.5.5 0 0 0 .491-.408l1.5-8A.5.5 0 0 0 14.5 3H2.89l-.405-1.621A.5.5 0 0 0 2 1zm3.915 10L3.102 4h10.796l-1.313 7zM6 14a1 1 0 1 1-2 0 1 1 0 0 1 2 0m7 0a1 1 0 1 1-2 0 1 1 0 0 1 2 0" />
+                        </svg>
+                    </button>
+                </form>
+                <form action="/products/{{id}}" method="GET">
+                    <button class="btn-prod fw-bold text-warning border-warning" title="Detalle del producto"
+                        type="submit">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                            class="bi bi-info-circle" viewBox="0 0 16 16">
+                            <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14m0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16" />
+                            <path
+                                d="m8.93 6.588-2.29.287-.082.38.45.083c.294.07.352.176.288.469l-.738 3.468c-.194.897.105 1.319.808 1.319.545 0 1.178-.252 1.465-.598l.088-.416c-.2.176-.492.246-.686.246-.275 0-.375-.193-.304-.533zM9 4.5a1 1 0 1 1-2 0 1 1 0 0 1 2 0" />
+                        </svg>
+                    </button>
+                </form>
+            </div>
+        </div>
+    </div>
+    {{/each}}
+</div>
+
+<div class="container mt-3 pb-5 mb-5">
+    <div class="row text-center">
+        <p class="text-dark fw-bold">
+            <a class="text-decoration-none text-dark me-2" href="/products?page={{prevPage}}">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                    class="bi bi-caret-left" viewBox="0 0 16 16">
+                    <path
+                        d="M10 12.796V3.204L4.519 8zm-.659.753-5.48-4.796a1 1 0 0 1 0-1.506l5.48-4.796A1 1 0 0 1 11 3.204v9.592a1 1 0 0 1-1.659.753" />
+                </svg>
+            </a>
+            {{currentPage}} / {{totalPages}}
+            <a class="text-decoration-none text-dark ms-2" href="/products?page={{nextPage}}">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                    class="bi bi-caret-right" viewBox="0 0 16 16">
+                    <path
+                        d="M6 12.796V3.204L11.481 8zm.659.753 5.48-4.796a1 1 0 0 0 0-1.506L6.66 2.451C6.011 1.885 5 2.345 5 3.204v9.592a1 1 0 0 0 1.659.753" />
+                </svg>
+            </a>
+        </p>
+    </div>
+</div>

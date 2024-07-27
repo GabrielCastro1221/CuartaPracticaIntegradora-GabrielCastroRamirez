@@ -1,4 +1,3 @@
-/*CONTROL*/
 * {
   margin: 0;
   padding: 0;
@@ -21,7 +20,14 @@ html {
   overflow-x: hidden;
 }
 
-/*UTILS*/
+.color-cart {
+  background: var(--btn-ok);
+}
+
+.color-cart:hover {
+  background: var(--btn-ok-hover);
+}
+
 .btn-ok {
   background: var(--btn-ok);
   color: var(--text-light);
@@ -95,16 +101,15 @@ html {
 .btn-prod svg {
   width: 25px;
   height: 25px;
-  color: var(--link-color);
+  color: var(--btn-ok);
   cursor: pointer;
 }
 
 .btn-prod svg:hover {
-  color: var(--link-color-hover);
+  color: var(--btn-ok-hover);
   font-weight: bold;
 }
 
-/*CARDS*/
 .card-prod {
   width: 20rem;
 }
@@ -113,7 +118,14 @@ html {
   height: min-content;
 }
 
-/*BANNER COMPRAS*/
 .banner {
   width: 100%;
+}
+
+.social {
+  color: var(--btn-ok);
+}
+
+.social:hover {
+  color: var(--btn-ok-hover);
 }

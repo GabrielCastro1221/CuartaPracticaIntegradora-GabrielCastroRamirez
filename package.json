@@ -7,7 +7,7 @@
   "scripts": {
     "test": "node src/test/tdd.js",
     "dev": "nodemon src/app.js --mode dev",
-    "start": "node src/app.js --mode build"
+    "start": "nodemon src/app.js --mode build"
   },
   "keywords": [],
   "author": "Gabriel Castro Ramirez",

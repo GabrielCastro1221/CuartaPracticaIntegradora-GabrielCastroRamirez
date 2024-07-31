@@ -17,6 +17,8 @@ class ViewsController {
         req.user.email,
         req.user.role
       );
+      const isAdmin = req.user.role === "admin";
+      const isUser = req.user.role === "usuario";
       const { page = 1, limit = 6, sort, query } = req.query;
       const skip = (page - 1) * limit;
       let queryOptions = {};
@@ -42,6 +44,8 @@ class ViewsController {
         res.render("products", {
             productos: newArray,
             user: dto,
+            isAdmin,
+            isUser,
             hasPrevPage,
             hasNextPage,
             prevPage: page > 1 ? parseInt(page) - 1 : null,
@@ -64,6 +68,8 @@ class ViewsController {
         req.user.email,
         req.user.role
       );
+      const isAdmin = req.user.role === "admin";
+      const isUser = req.user.role === "usuario";
       const cart = await cartR.obtenerProductosDeCarrito(cartId);
       if (!cart) {
         winston.info("El carrito no existe");
@@ -81,7 +87,7 @@ class ViewsController {
           cartId,
         };
       });
-      res.render("carts", { productos: productInCart, totalPurchase, cartId, user: dto });
+      res.render("carts", { productos: productInCart, totalPurchase, cartId, user: dto, isAdmin, isUser });
     } catch (error) {
       res.redirect("/404-not-found");
     }
@@ -119,7 +125,9 @@ class ViewsController {
         req.user.email,
         req.user.role
       );
-      res.render("chat", { user: dto });
+      const isAdmin = req.user.role === "admin";
+      const isUser = req.user.role === "usuario";
+      res.render("chat", { user: dto, isAdmin, isUser });
     } catch (error) {
       res.redirect("/404-not-found");
     }
@@ -133,7 +141,9 @@ class ViewsController {
         req.user.email,
         req.user.role
       );
-      res.render("home", { user: dto });
+      const isAdmin = req.user.role === "admin";
+      const isUser = req.user.role === "usuario";
+      res.render("home", { user: dto, isAdmin, isUser });
     } catch (error) {
       res.redirect("/404-not-found");
     }
@@ -190,8 +200,16 @@ class ViewsController {
   async renderProductDetail(req, res) {
     const prodId = req.params.pid;
     try {
+      const dto = new DTO(
+        req.user.first_name,
+        req.user.last_name,
+        req.user.email,
+        req.user.role
+      );
+      const isAdmin = req.user.role === "admin";
+      const isUser = req.user.role === "usuario";
       const product = await prodR.getProdById(prodId);
-      res.render("productDetail", { product });
+      res.render("productDetail", { product, user: dto, isAdmin, isUser });
     } catch (error) {
       res.redirect("/404-not-found");
     }

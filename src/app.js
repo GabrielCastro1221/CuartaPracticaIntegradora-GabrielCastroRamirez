@@ -12,7 +12,6 @@ const initializePassport = require("./config/passport.config.js");
 const configObject = require("./config/env.config.js");
 
 const auth = require("./middleware/authmiddleware.js");
-const ErrorManager = require("./middleware/errorsMiddleware.js");
 const addLogger = require("./middleware/loggerMiddleware.js");
 
 const SocketManager = require("./sockets/socketmanager.js");
@@ -21,7 +20,6 @@ const productsRouter = require("./routes/products.router.js");
 const cartsRouter = require("./routes/carts.router.js");
 const viewsRouter = require("./routes/views.router.js");
 const userRouter = require("./routes/user.router.js");
-const testRouter = require("./routes/test.router.js");
 const loggerRouter = require("./routes/logger.router.js");
 
 const app = express();
@@ -60,10 +58,9 @@ app.use("/api/logger-test", loggerRouter);
 app.use("/api/products", productsRouter);
 app.use("/api/carts", cartsRouter);
 app.use("/api/users", userRouter);
-app.use("/api/mockingProducts", testRouter);
 app.use("/", viewsRouter);
 app.use("/apidocs", swaggerUiExpress.serve, swaggerUiExpress.setup(specs));
-app.use(ErrorManager);
+
 
 const httpServer = app.listen(PORT, () => {
   winston.info(`Server connected http://localhost:${PORT}`);

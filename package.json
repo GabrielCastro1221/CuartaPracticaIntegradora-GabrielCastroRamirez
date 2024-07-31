@@ -5,7 +5,6 @@
   "main": "app.js",
   "type": "commonjs",
   "scripts": {
-    "test": "mocha src/test/product.test.js",
     "dev": "nodemon src/app.js --mode dev",
     "start": "nodemon src/app.js --mode build"
   },

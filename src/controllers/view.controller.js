@@ -111,7 +111,15 @@ class ViewsController {
 
   async realTimeProducts(req, res) {
     try {
-      res.render("realtimeproducts");
+      const dto = new DTO(
+        req.user.first_name,
+        req.user.last_name,
+        req.user.email,
+        req.user.role
+      );
+      const isAdmin = req.user.role === "admin";
+      const isUser = req.user.role === "usuario";
+      res.render("realtimeproducts", { user: dto, isAdmin, isUser });
     } catch (error) {
       res.redirect("/404-not-found");
     }

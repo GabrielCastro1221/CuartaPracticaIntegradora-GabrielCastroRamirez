@@ -3,6 +3,7 @@ const winston = require("winston");
 const Product = require("../models/product.model.js");
 const CartRepository = require("../repositories/cart.repository.js");
 const ProductRepository = require("../repositories/product.repository.js");
+const DTO = require("../dto/user.dto.js");
 
 const cartR = new CartRepository();
 const prodR = new ProductRepository();
@@ -10,6 +11,12 @@ const prodR = new ProductRepository();
 class ViewsController {
   async products(req, res) {
     try {
+      const dto = new DTO(
+        req.user.first_name,
+        req.user.last_name,
+        req.user.email,
+        req.user.role
+      );
       const { page = 1, limit = 6, sort, query } = req.query;
       const skip = (page - 1) * limit;
       let queryOptions = {};
@@ -34,6 +41,7 @@ class ViewsController {
         const cartId = req.user.cart.toString();
         res.render("products", {
             productos: newArray,
+            user: dto,
             hasPrevPage,
             hasNextPage,
             prevPage: page > 1 ? parseInt(page) - 1 : null,
@@ -50,6 +58,12 @@ class ViewsController {
   async cart(req, res) {
     const cartId = req.params.cid;
     try {
+      const dto = new DTO(
+        req.user.first_name,
+        req.user.last_name,
+        req.user.email,
+        req.user.role
+      );
       const cart = await cartR.obtenerProductosDeCarrito(cartId);
       if (!cart) {
         winston.info("El carrito no existe");
@@ -67,7 +81,7 @@ class ViewsController {
           cartId,
         };
       });
-      res.render("carts", { productos: productInCart, totalPurchase, cartId });
+      res.render("carts", { productos: productInCart, totalPurchase, cartId, user: dto });
     } catch (error) {
       res.redirect("/404-not-found");
     }
@@ -99,7 +113,13 @@ class ViewsController {
 
   async chat(req, res) {
     try {
-      res.render("chat");
+      const dto = new DTO(
+        req.user.first_name,
+        req.user.last_name,
+        req.user.email,
+        req.user.role
+      );
+      res.render("chat", { user: dto });
     } catch (error) {
       res.redirect("/404-not-found");
     }
@@ -107,7 +127,13 @@ class ViewsController {
 
   async home(req, res) {
     try {
-      res.render("home");
+      const dto = new DTO(
+        req.user.first_name,
+        req.user.last_name,
+        req.user.email,
+        req.user.role
+      );
+      res.render("home", { user: dto });
     } catch (error) {
       res.redirect("/404-not-found");
     }
